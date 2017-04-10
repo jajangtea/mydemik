@@ -81,9 +81,47 @@ public final class FSurat extends javax.swing.JFrame {
         loadkeperluan();
         loadperusahaan();
         ubahKolom();
-          
+        kodeOtomatis();
        
     }
+    
+    private void kodeOtomatis()
+    {
+        try
+        {
+            SessionFactory sf=HibernateUtil.getSessionFactory();
+            Session s=sf.openSession();
+            Transaction tx = s.beginTransaction();
+            String sql="select max(Left(noSurat,3)) from Surat";
+            Query q = s.createSQLQuery(sql);
+            if(q.uniqueResult()==null)
+            {
+                txtNomor.setText("001/Sket/Puket-1/IV/2017");
+            }
+            else
+            {
+                System.out.println(q.uniqueResult());
+                int i=Integer.parseInt(q.uniqueResult().toString());
+                String no = String.valueOf(i+1);
+                int noLong = no.length();
+                for(int a=0;a<3-noLong;a++)
+                {
+                    no = "0"+no;
+                }
+
+                txtNomor.setText(no+"/Sket/Puket-1/IV/2017");
+                s.flush();
+                tx.commit();
+                s.close();
+            }
+        }
+        catch (Exception e) 
+        {
+                System.out.println(e);
+        }
+        
+    }
+    
     private void ubahKolom()
     {
         jTSurat.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -491,12 +529,16 @@ public final class FSurat extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel9.setText("Telepon :");
 
+        lbNim.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lbNim.setText("#####");
 
+        lbNama.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lbNama.setText("#####");
 
+        lbTlp.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lbTlp.setText("#####");
 
+        lbAlamat.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lbAlamat.setText("#####");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -614,6 +656,8 @@ public final class FSurat extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel12.setText("Keperluan :");
+
+        txtNomor.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jTSurat.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTSurat.setModel(new javax.swing.table.DefaultTableModel(
@@ -755,7 +799,7 @@ public final class FSurat extends javax.swing.JFrame {
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         try 
         {
-            dispose();
+            this.setVisible(false);
             cari(txtNim.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
