@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 28, 2017 6:13:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entiti.mydemik.com.Surat" table="surat" catalog="mydemik" optimistic-lock="version">
+        <id name="idSurat" type="java.lang.Integer">
+            <column name="idSurat" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="jenissurat" class="entiti.mydemik.com.Jenissurat" fetch="select">
+            <column name="idJenis" not-null="true" />
+        </many-to-one>
+        <many-to-one name="kategori" class="entiti.mydemik.com.Kategori" fetch="select">
+            <column name="idKategori" not-null="true" />
+        </many-to-one>
+        <many-to-one name="keperluan" class="entiti.mydemik.com.Keperluan" fetch="select">
+            <column name="idKeperluan" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mahasiswa" class="entiti.mydemik.com.Mahasiswa" fetch="select">
+            <column name="idMahasiswa" not-null="true" />
+        </many-to-one>
+        <property name="tanggalSurat" type="date">
+            <column name="tanggalSurat" length="10" not-null="true" />
+        </property>
+        <property name="tanggalBuat" type="date">
+            <column name="tanggalBuat" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
