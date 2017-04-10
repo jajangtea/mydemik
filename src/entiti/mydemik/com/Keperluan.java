@@ -49,7 +49,12 @@ public class Keperluan  implements java.io.Serializable {
         this.surats = surats;
     }
 
+    @Override
+    public String toString() {
+        return keperluan;
+    }
 
+    
 
 
 }

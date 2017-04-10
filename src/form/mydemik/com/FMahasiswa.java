@@ -201,10 +201,10 @@ public class FMahasiswa extends javax.swing.JFrame {
         FSurat fs;
         try {
             fs = new FSurat();
-             fs.txtNim.setText(jTMahasiswa.getValueAt(baris,0).toString());
-        fs.cari(fs.txtNim.getText());
-        this.setVisible(false);
-        fs.setVisible(rootPaneCheckingEnabled);
+            fs.txtNim.setText(jTMahasiswa.getValueAt(baris,0).toString());
+            fs.cari(fs.txtNim.getText());
+            this.setVisible(false);
+            fs.setVisible(rootPaneCheckingEnabled);
         } catch (SQLException ex) {
             Logger.getLogger(FMahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }

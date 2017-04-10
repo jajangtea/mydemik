@@ -7,6 +7,7 @@ package db.service.mydemik.com;
 
 import entiti.mydemik.com.Jenissurat;
 import entiti.mydemik.com.Keperluan;
+import entiti.mydemik.com.Perusahaan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,8 +26,10 @@ public class SuratService {
     PreparedStatement preparedStatement;
     Jenissurat jns;
     Keperluan kpr;
+    Perusahaan prs;
     List<Jenissurat> Jenissurats=new ArrayList<Jenissurat>();
     List<Keperluan> keperluans=new ArrayList<Keperluan>();
+    List<Perusahaan> perusahaans=new ArrayList<Perusahaan>();
     
     public SuratService(Connection connection){
         this.connection=connection;
@@ -53,5 +56,17 @@ public class SuratService {
             keperluans.add(kpr);
         }
         return keperluans;
+    }
+    
+    public List<Perusahaan> getAllPerusahaan() throws SQLException{
+        preparedStatement=connection.prepareStatement("SELECT * FROM Perusahaan");
+        ResultSet rs=preparedStatement.executeQuery();
+        while(rs.next()){
+            prs=new Perusahaan();
+            prs.setIdPerusahaan(rs.getInt("idPerusahaan"));
+            prs.setNamaPerusahaan(rs.getString("namaPerusahaan"));
+            perusahaans.add(prs);
+        }
+        return perusahaans;
     }
 }
