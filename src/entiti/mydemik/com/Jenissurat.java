@@ -1,5 +1,5 @@
 package entiti.mydemik.com;
-// Generated Mar 28, 2017 6:13:35 PM by Hibernate Tools 4.3.1
+// Generated Apr 10, 2017 12:09:36 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -59,10 +59,7 @@ public class Jenissurat  implements java.io.Serializable {
         this.surats = surats;
     }
 
-    @Override
-    public String toString(){
-        return jenisSurat;
-    }
+
 
 
 }

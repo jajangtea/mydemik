@@ -648,6 +648,7 @@ public final class FSurat extends javax.swing.JFrame {
         Jenissurat jns=(Jenissurat) jCJenis.getSelectedItem();
         js.setIdJenis((Integer) jns.getIdJenis());
         sr.setKeperluan(perlu);
+        sr.getPerusahaan().setIdPerusahaan(idSurat);
         perlu.setIdKeperluan(kprl.getIdKeperluan());
         if(jXDatePicker1.getDate()==null)
         {
