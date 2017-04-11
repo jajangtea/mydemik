@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -37,20 +38,20 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.jdesktop.swingx.renderer.DefaultTableRenderer;
-import sun.swing.table.DefaultTableCellHeaderRenderer;
 import util.mydemik.com.HibernateUtil;
 
 /**
@@ -170,7 +171,19 @@ public final class FSurat extends javax.swing.JFrame {
                 int dr=JOptionPane.showConfirmDialog(null, "Cetak Surat", "Pertanyaan", dialogbtn);
                 if(dr==0)
                 {
-                     JOptionPane.showMessageDialog(null, value3);
+                    try
+                    {  
+                        String namafile= "src/Laporan/mydemik/com/s_aktif_kuliah.jasper"; 
+                        HashMap param = new HashMap();                
+                        param.put("parameter1","tes"); 
+                        System.out.println("tampilkan laporan");
+                        JasperPrint jp = JasperFillManager.fillReport(namafile,param);
+                        JasperViewer.viewReport(jp,false);
+                    } catch (ClassCastException ex) {
+                         JOptionPane.showMessageDialog(null, "Gagal Membuka Laporan" + ex,"Cetak Laporan",JOptionPane.ERROR_MESSAGE);
+                    } catch (JRException ex) {
+                        Logger.getLogger(FSurat.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 else
                 {
