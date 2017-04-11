@@ -937,8 +937,8 @@ public final class FSurat extends javax.swing.JFrame {
         int baris =jTSurat.getSelectedRow();
         idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 10);
         xnosurat=(String) jTSurat.getModel().getValueAt(baris, 1);
-        xnim=(String) jTSurat.getModel().getValueAt(baris, 2);
-        xnama=(String) jTSurat.getModel().getValueAt(baris, 3);
+        xnim=(String) jTSurat.getModel().getValueAt(baris, 3);
+        xnama=(String) jTSurat.getModel().getValueAt(baris, 4);
        // xalamat=(String) jTSurat.getModel().getValueAt(baris, 2);
     }//GEN-LAST:event_jTSuratMouseClicked
 
