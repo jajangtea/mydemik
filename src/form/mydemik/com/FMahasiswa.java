@@ -204,7 +204,7 @@ public class FMahasiswa extends javax.swing.JFrame {
             fs.txtNim.setText(jTMahasiswa.getValueAt(baris,0).toString());
             fs.cari(fs.txtNim.getText());
             this.setVisible(false);
-            fs.setVisible(rootPaneCheckingEnabled);
+            fs.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(FMahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }

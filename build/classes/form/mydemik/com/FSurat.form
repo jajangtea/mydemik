@@ -66,34 +66,29 @@
                       </Group>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                      <Component id="txtNim" min="-2" pref="276" max="-2" attributes="0"/>
-                                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                      <Component id="btnCari" min="-2" pref="106" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="txtNomor" min="-2" pref="390" max="-2" attributes="0"/>
-                                  <Component id="jCJenis" min="-2" pref="390" max="-2" attributes="0"/>
-                                  <Component id="jXDatePicker1" min="-2" pref="390" max="-2" attributes="0"/>
-                                  <Component id="jCKeperluan" min="-2" pref="390" max="-2" attributes="0"/>
-                                  <Component id="jCPerusahaan" min="-2" pref="386" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="btnSimpan" min="-2" pref="104" max="-2" attributes="0"/>
-                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Component id="btnHapus" min="-2" pref="276" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                              <Component id="txtNim" min="-2" pref="276" max="-2" attributes="0"/>
+                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                              <Component id="btnCari" min="-2" pref="106" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="txtNomor" min="-2" pref="390" max="-2" attributes="0"/>
+                          <Component id="jCJenis" min="-2" pref="390" max="-2" attributes="0"/>
+                          <Component id="jXDatePicker1" min="-2" pref="390" max="-2" attributes="0"/>
+                          <Component id="jCKeperluan" min="-2" pref="390" max="-2" attributes="0"/>
+                          <Component id="jCPerusahaan" min="-2" pref="386" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnSimpan" min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="btnHapus" min="-2" pref="276" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jradmasuk" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                               <Component id="jradkeluar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">

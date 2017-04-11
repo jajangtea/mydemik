@@ -799,7 +799,7 @@ public final class FSurat extends javax.swing.JFrame {
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         try 
         {
-            this.setVisible(false);
+//            this.setVisible(false);
             cari(txtNim.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
