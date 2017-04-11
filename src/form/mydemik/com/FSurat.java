@@ -374,6 +374,7 @@ public final class FSurat extends javax.swing.JFrame {
             {
                 FMahasiswa f =new FMahasiswa();
                 f.setVisible(rootPaneCheckingEnabled);
+                this.setVisible(false);
             }
             else if (mhs.isEmpty())
             {
@@ -381,18 +382,17 @@ public final class FSurat extends javax.swing.JFrame {
                 int dr=JOptionPane.showConfirmDialog(this, "Form pencarian.", "Pertanyaan", dialogbtn);
                 if(dr==0)
                 {
-                     FMahasiswa f =new FMahasiswa();
-                     f.setModalExclusionType(Dialog.ModalExclusionType.NO_EXCLUDE);
-                     f.setVisible(rootPaneCheckingEnabled);
-                     f.txtCari.setText("");
-                     f.txtCari.requestFocus();
-                     this.setVisible(false);
+                    FMahasiswa f =new FMahasiswa();
+                    f.setModalExclusionType(Dialog.ModalExclusionType.NO_EXCLUDE);
+                    f.setVisible(rootPaneCheckingEnabled);
+                    f.txtCari.setText("");
+                    f.txtCari.requestFocus();
+                    this.setVisible(false);
                 }
                 else
                 {
                    txtNim.setText("");
                    txtNim.requestFocus();
-                           
                }
                 
             }
@@ -799,7 +799,7 @@ public final class FSurat extends javax.swing.JFrame {
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         try 
         {
-//            this.setVisible(false);
+           
             cari(txtNim.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
