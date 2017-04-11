@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -43,6 +44,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -171,25 +173,32 @@ public final class FSurat extends javax.swing.JFrame {
                 int dr=JOptionPane.showConfirmDialog(null, "Cetak Surat", "Pertanyaan", dialogbtn);
                 if(dr==0)
                 {
-                    try
-                    {  
-                        String namafile= "src/Laporan/mydemik/com/s_aktif_kuliah.jasper"; 
-                        HashMap param = new HashMap();                
-                        param.put("parameter1","tes"); 
-                        System.out.println("tampilkan laporan");
-                        JasperPrint jp = JasperFillManager.fillReport(namafile,param);
-                        JasperViewer.viewReport(jp,false);
-                    } catch (ClassCastException ex) {
-                         JOptionPane.showMessageDialog(null, "Gagal Membuka Laporan" + ex,"Cetak Laporan",JOptionPane.ERROR_MESSAGE);
+                    
+                    File namafile= new File("src/laporan/mydemik/com/s_aktif_kuliah.jasper"); 
+                    HashMap param = new HashMap();                
+                    param.put("noSurat","tes"); 
+                    System.out.println("tampilkan laporan");
+
+                    Map parameters = new HashMap();
+//                        parameters.put("partNum", module.getPartNum());
+//                        parameters.put("moduleType", module.getModuleType());
+//                        parameters.put("area", module.getArea());
+//                        parameters.put("membraneType", module.getMembraneMaterial());
+//                        parameters.put("channelHeight", module.getChannelHeight());
+                    parameters.put("noSurat", "tes");
+                      
+                    try 
+                    {
+                        JasperPrint print = JasperFillManager.fillReport(namafile.getPath(), parameters, new JREmptyDataSource());
+                        JasperViewer.viewReport(print);
                     } catch (JRException ex) {
-                        Logger.getLogger(FSurat.class.getName()).log(Level.SEVERE, null, ex);
+                       JOptionPane.showMessageDialog(null, "Gagal Membuka Laporan" + ex,"Cetak Laporan",JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else
                 {
                    txtNim.setText("");
                    txtNim.requestFocus();
-                           
                }
             }
         }
