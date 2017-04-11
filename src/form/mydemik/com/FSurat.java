@@ -66,6 +66,7 @@ public final class FSurat extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     Integer idmhs,idkat,idSurat;
+    String xnosurat,xnama,xalamat,xnim;
     Date tgl;
     List<Jenissurat> jenissurat=new ArrayList<Jenissurat>();
     List<Keperluan> kpr=new ArrayList<Keperluan>();
@@ -185,7 +186,9 @@ public final class FSurat extends javax.swing.JFrame {
 //                        parameters.put("area", module.getArea());
 //                        parameters.put("membraneType", module.getMembraneMaterial());
 //                        parameters.put("channelHeight", module.getChannelHeight());
-                    parameters.put("noSurat", "tes");
+                    parameters.put("noSurat", xnosurat);
+                    parameters.put("nim", xnim);
+                    parameters.put("nama", xnama);
                       
                     try 
                     {
@@ -933,6 +936,10 @@ public final class FSurat extends javax.swing.JFrame {
     private void jTSuratMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTSuratMouseClicked
         int baris =jTSurat.getSelectedRow();
         idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 10);
+        xnosurat=(String) jTSurat.getModel().getValueAt(baris, 1);
+        xnim=(String) jTSurat.getModel().getValueAt(baris, 2);
+        xnama=(String) jTSurat.getModel().getValueAt(baris, 3);
+       // xalamat=(String) jTSurat.getModel().getValueAt(baris, 2);
     }//GEN-LAST:event_jTSuratMouseClicked
 
     /**
