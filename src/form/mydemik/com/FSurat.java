@@ -402,7 +402,6 @@ public final class FSurat extends javax.swing.JFrame {
                 {
                     Map row = (Map)br;
                     idmhs=Integer.parseInt(row.get("idMahasiswa").toString());
-                  
                     lbNim.setText(row.get("nim").toString());
                     lbNama.setText(row.get("nama").toString());
                     lbTlp.setText(row.get("tlp").toString());
