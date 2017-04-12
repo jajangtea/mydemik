@@ -66,7 +66,8 @@ public final class FSurat extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     Integer idmhs,idkat,idSurat;
-    String xnosurat,xnama,xalamat,xnim;
+    String xnosurat,xnama,xalamat,xprodi,xsemester;
+    Integer xnim;
     Date tgl;
     List<Jenissurat> jenissurat=new ArrayList<Jenissurat>();
     List<Keperluan> kpr=new ArrayList<Keperluan>();
@@ -179,6 +180,19 @@ public final class FSurat extends javax.swing.JFrame {
                     HashMap param = new HashMap();                
                     param.put("noSurat","tes"); 
                     System.out.println("tampilkan laporan");
+                    int baris =jTSurat.getSelectedRow();
+                    idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 11);
+                    xnosurat=(String) jTSurat.getModel().getValueAt(baris, 1);
+                    xnim= (Integer) jTSurat.getModel().getValueAt(baris, 3);
+                    xnama=(String) jTSurat.getModel().getValueAt(baris, 4);
+                    xprodi=(String) jTSurat.getModel().getValueAt(baris, 6);
+                    xalamat=(String) jTSurat.getModel().getValueAt(baris, 9);
+                    System.out.println(idSurat);
+                    System.out.println(xnosurat);
+                    System.out.println(xnim);
+                    System.out.println(xnama);
+                    System.out.println(xprodi);
+                    System.out.println(xalamat);
 
                     Map parameters = new HashMap();
 //                        parameters.put("partNum", module.getPartNum());
@@ -186,9 +200,12 @@ public final class FSurat extends javax.swing.JFrame {
 //                        parameters.put("area", module.getArea());
 //                        parameters.put("membraneType", module.getMembraneMaterial());
 //                        parameters.put("channelHeight", module.getChannelHeight());
-                    parameters.put("noSurat", xnosurat);
-                    parameters.put("nim", xnim);
-                    parameters.put("nama", xnama);
+                    parameters.put("xnoSurat", xnosurat);
+                    parameters.put("xnim", xnim);
+                    parameters.put("xnama", xnama);
+                    parameters.put("xprodi", xprodi);
+                    parameters.put("xalamat", xalamat);
+                    //parameters.put("field1", xnim);
                       
                     try 
                     {
@@ -304,6 +321,7 @@ public final class FSurat extends javax.swing.JFrame {
             tableHeaders.add("NIM");
             tableHeaders.add("Nama");
             tableHeaders.add("Telepon");
+            tableHeaders.add("Prodi");
             tableHeaders.add("Tanggal Surat"); 
             tableHeaders.add("Jenis Surat");
             tableHeaders.add("Alamat");
@@ -318,10 +336,10 @@ public final class FSurat extends javax.swing.JFrame {
                 oneRow.add(count);
                 oneRow.add(sr.getNoSurat());
                 oneRow.add(sr.getTanggalBuat().toString());
-                
                 oneRow.add(sr.getMahasiswa().getNim());
                 oneRow.add(sr.getMahasiswa().getNama());
                 oneRow.add(sr.getMahasiswa().getTlp());
+                oneRow.add(sr.getMahasiswa().getProdi().getNamaProdi());
                 oneRow.add(sr.getTanggalSurat().toString());
                 oneRow.add(sr.getJenissurat().getJenisSurat());
                 oneRow.add(sr.getMahasiswa().getAlamat());
@@ -334,11 +352,11 @@ public final class FSurat extends javax.swing.JFrame {
             jTSurat.setModel(new DefaultTableModel(tableData, tableHeaders));
             alignCenter(jTSurat, 0);
             alignCenter(jTSurat, 3);
-            alignCenter(jTSurat, 6);
+            alignCenter(jTSurat, 7);
             headerAlignCenter(jTSurat);
-            hideColumn(jTSurat, 10);
+            hideColumn(jTSurat, 11);
             hideColumn(jTSurat, 2);
-            hideColumn(jTSurat, 7);
+            hideColumn(jTSurat, 8);
             boldHeader(jTSurat,12);
             s.flush();
             tx.commit();
@@ -935,11 +953,18 @@ public final class FSurat extends javax.swing.JFrame {
 
     private void jTSuratMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTSuratMouseClicked
         int baris =jTSurat.getSelectedRow();
-        idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 10);
+        idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 11);
         xnosurat=(String) jTSurat.getModel().getValueAt(baris, 1);
-        xnim=(String) jTSurat.getModel().getValueAt(baris, 3);
+        xnim= (Integer) jTSurat.getModel().getValueAt(baris, 3);
         xnama=(String) jTSurat.getModel().getValueAt(baris, 4);
-       // xalamat=(String) jTSurat.getModel().getValueAt(baris, 2);
+        xprodi=(String) jTSurat.getModel().getValueAt(baris, 6);
+        xalamat=(String) jTSurat.getModel().getValueAt(baris, 9);
+        System.out.println(idSurat);
+        System.out.println(xnosurat);
+        System.out.println(xnim);
+        System.out.println(xnama);
+        System.out.println(xprodi);
+        System.out.println(xalamat);
     }//GEN-LAST:event_jTSuratMouseClicked
 
     /**
