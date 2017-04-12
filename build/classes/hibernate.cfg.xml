@@ -9,6 +9,7 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping resource="entiti/mydemik/com/Jenissurat.hbm.xml"/>
     <mapping resource="entiti/mydemik/com/Surat.hbm.xml"/>
+    <mapping resource="entiti/mydemik/com/Thajaran.hbm.xml"/>
     <mapping resource="entiti/mydemik/com/Keperluan.hbm.xml"/>
     <mapping resource="entiti/mydemik/com/Perusahaan.hbm.xml"/>
     <mapping resource="entiti/mydemik/com/Mahasiswa.hbm.xml"/>

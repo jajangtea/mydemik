@@ -1,5 +1,5 @@
 package entiti.mydemik.com;
-// Generated Apr 12, 2017 11:11:26 AM by Hibernate Tools 4.3.1
+// Generated Apr 12, 2017 12:46:51 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,19 +14,22 @@ public class Thajaran  implements java.io.Serializable {
      private Integer idThajaran;
      private String tahun;
      private int status;
+     private String semester;
      private Set surats = new HashSet(0);
 
     public Thajaran() {
     }
 
 	
-    public Thajaran(String tahun, int status) {
+    public Thajaran(String tahun, int status, String semester) {
         this.tahun = tahun;
         this.status = status;
+        this.semester = semester;
     }
-    public Thajaran(String tahun, int status, Set surats) {
+    public Thajaran(String tahun, int status, String semester, Set surats) {
        this.tahun = tahun;
        this.status = status;
+       this.semester = semester;
        this.surats = surats;
     }
    
@@ -50,6 +53,13 @@ public class Thajaran  implements java.io.Serializable {
     
     public void setStatus(int status) {
         this.status = status;
+    }
+    public String getSemester() {
+        return this.semester;
+    }
+    
+    public void setSemester(String semester) {
+        this.semester = semester;
     }
     public Set getSurats() {
         return this.surats;

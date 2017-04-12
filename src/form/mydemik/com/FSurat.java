@@ -14,6 +14,7 @@ import entiti.mydemik.com.Keperluan;
 import entiti.mydemik.com.Mahasiswa;
 import entiti.mydemik.com.Perusahaan;
 import entiti.mydemik.com.Surat;
+import entiti.mydemik.com.Thajaran;
 import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.Point;
@@ -54,6 +55,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import util.mydemik.com.Fungsi;
 import util.mydemik.com.HibernateUtil;
 
 /**
@@ -857,7 +859,9 @@ public final class FSurat extends javax.swing.JFrame {
         Mahasiswa mhs = new Mahasiswa();
         Keperluan prl = new Keperluan();
         Perusahaan prs=new Perusahaan();
+        Thajaran t=new Thajaran();
         Kategori kat=new Kategori();
+        Fungsi fs=new Fungsi();
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
@@ -910,6 +914,8 @@ public final class FSurat extends javax.swing.JFrame {
         kat.setIdKategori(idkat);
         sr.setNoSurat(txtNomor.getText());
         System.out.println(txtNomor.getText());
+        sr.setThajaran(t);
+        t.setIdThajaran(fs.getTa());
         Transaction tx=s.beginTransaction();
         s.saveOrUpdate(sr);
         tx.commit();

@@ -24,9 +24,11 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="2d7c953c-6654-426a-b1e5-8504bfe6bf1d"/>
-	<parameter name="noSurat" class="java.lang.String"/>
-	<parameter name="nim" class="java.lang.String"/>
-	<parameter name="nama" class="java.lang.String"/>
+	<parameter name="xnoSurat" class="java.lang.String"/>
+	<parameter name="xnim" class="java.lang.Integer"/>
+	<parameter name="xnama" class="java.lang.String"/>
+	<parameter name="xalamat" class="java.lang.String"/>
+	<parameter name="xprodi" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -52,11 +54,11 @@
 	<columnHeader>
 		<band height="28" splitType="Stretch">
 			<textField>
-				<reportElement x="1" y="0" width="554" height="20" uuid="144a1bf4-7130-482c-b84e-0ce4eca60ab6"/>
+				<reportElement x="1" y="4" width="554" height="20" uuid="ce088b0d-801a-48d7-81af-306f60b4b91e"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{noSurat}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{xnoSurat}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
@@ -126,20 +128,6 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="241" y="81" width="216" height="20" uuid="10098240-5b8f-4745-bd2d-d50d418ceee9"/>
-				<textElement>
-					<font fontName="Calibri" size="12"/>
-				</textElement>
-				<text><![CDATA[#####]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="241" y="101" width="216" height="56" uuid="d92898ae-eba9-4f2b-9e18-c9701afa07e1"/>
-				<textElement>
-					<font fontName="Calibri" size="12"/>
-				</textElement>
-				<text><![CDATA[#####]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="1" y="157" width="554" height="35" uuid="dc19132e-09a1-4d47-bac1-c72c02452103"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Calibri" size="12"/>
@@ -182,18 +170,32 @@
 				<text><![CDATA[Puket I Bidang Akademik]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="241" y="41" width="216" height="20" uuid="574c5e48-16e8-4cf2-b102-c9dc81b8b1f8"/>
+				<reportElement x="241" y="41" width="281" height="20" uuid="0f45277f-d719-4ef7-9b0f-ea62d826abd9"/>
 				<textElement>
 					<font fontName="Calibri" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nim}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{xnim}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="241" y="61" width="216" height="20" uuid="f9dbc5bf-a4c5-4dab-93f3-3fcd3a6d1244"/>
+				<reportElement x="241" y="61" width="281" height="20" uuid="7d14d1c6-6e60-4c67-9a78-6f9c9f17a6f6"/>
 				<textElement>
 					<font fontName="Calibri" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nama}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{xnama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="101" width="281" height="56" uuid="1efd516c-d115-4e05-9cfc-75a195e91439"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{xalamat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="81" width="281" height="20" uuid="95f643b1-a28b-437c-8f0f-570b0c5bbd62"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{xprodi}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
