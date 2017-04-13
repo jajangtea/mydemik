@@ -307,7 +307,7 @@ public final class FSurat extends javax.swing.JFrame {
             }
             else
             {
-                String q2="FROM Surat where idJenis=2";
+                String q2="FROM Surat where idJenis<>1";
                 q = s.createQuery(q2);
             }
             List resultList = q.list();
@@ -428,7 +428,7 @@ public final class FSurat extends javax.swing.JFrame {
             else if (mhs.isEmpty())
             {
                 int dialogbtn = JOptionPane.YES_NO_OPTION;
-                int dr=JOptionPane.showConfirmDialog(this, "Form pencarian.", "Pertanyaan", dialogbtn);
+                int dr=JOptionPane.showConfirmDialog(this, "Form Pencarian.", "Pertanyaan", dialogbtn);
                 if(dr==0)
                 {
                     FMhs f =new FMhs();
