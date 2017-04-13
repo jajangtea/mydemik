@@ -74,7 +74,7 @@ public final class FSurat extends javax.swing.JFrame {
     private JPanel contentPane;
     private JLabel lblWall;
     Integer idmhs,idkat,idSurat;
-    String xnosurat,xnama,xalamat,xprodi,xsemesterTahun,xtanggal;
+    String xnosurat,xnama,xalamat,xprodi,xsemesterTahun,xtanggal,xisipermohonan;
     Integer xnim;
     Date tgl;
     Fungsi nf=new Fungsi();
@@ -189,19 +189,21 @@ public final class FSurat extends javax.swing.JFrame {
                 {
                     
                     File namafile= new File("src/laporan/mydemik/com/s_aktif_kuliah.jasper"); 
-                    HashMap param = new HashMap();                
-                    param.put("noSurat","tes"); 
+                               
+                   
                     System.out.println("tampilkan laporan");
                     int baris =jTSurat.getSelectedRow();
                     Fungsi fs=new Fungsi();
                     xsemesterTahun=fs.getSemesterTahun();
                     xtanggal=fs.getTanggal();
+                    xisipermohonan=fs.getPermohonan_kp_skripsi(xnama, jCJenisKPSkripsi.getSelectedItem().toString(), xnama);
                     idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 1);
                     xnosurat=(String) jTSurat.getModel().getValueAt(baris, 2);
                     xnim= (Integer) jTSurat.getModel().getValueAt(baris, 3);
                     xnama=(String) jTSurat.getModel().getValueAt(baris, 4);
                     xprodi=(String) jTSurat.getModel().getValueAt(baris, 6);
                     xalamat=(String) jTSurat.getModel().getValueAt(baris, 9);
+                   
                     
                     System.out.println(idSurat);
                     System.out.println(xnosurat);
@@ -218,6 +220,7 @@ public final class FSurat extends javax.swing.JFrame {
                     parameters.put("xalamat", xalamat);
                     parameters.put("xsemesterTahun", xsemesterTahun);
                     parameters.put("xtanggal", xtanggal);
+                    parameters.put("xisipermohonan", xisipermohonan);
                     //parameters.put("field1", xnim);
                       
                     try 
@@ -514,6 +517,8 @@ public final class FSurat extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTSurat = new javax.swing.JTable();
         btnPDF = new javax.swing.JButton();
+        lbtanggal1 = new javax.swing.JLabel();
+        btnCetak = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -741,6 +746,17 @@ public final class FSurat extends javax.swing.JFrame {
             }
         });
 
+        lbtanggal1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbtanggal1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbtanggal1.setText("FORM INI DIGUNAKAN UNTUK CETAK SURAT AKTIF DAN PERMOHONAN KP & SKRIPSI");
+
+        btnCetak.setText("Cetak");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -754,97 +770,97 @@ public final class FSurat extends javax.swing.JFrame {
                         .addGap(915, 915, 915)
                         .addComponent(btnClose))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(21, 21, 21)
-                                            .addComponent(lbKeperluan))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(41, 41, 41)
-                                            .addComponent(lbtujuan)))
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
+                                .addComponent(lbtanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbtanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtNomor, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jXDatePicker1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                                                .addComponent(jCKeperluan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jCPerusahaan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lbtujuan)
+                                            .addComponent(jLabel5)
+                                            .addComponent(lbKeperluan)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel10))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(txtNomor, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                                                        .addComponent(jCKeperluan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                    .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(jCPerusahaan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(btnPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(radakt)
+                                                .addGap(2, 2, 2)
+                                                .addComponent(radkpskripsi)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jCJenisKPSkripsi, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(radakt)
-                                        .addGap(2, 2, 2)
-                                        .addComponent(radkpskripsi)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCJenisKPSkripsi, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addComponent(jLabel4))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(17, 17, 17)
-                                        .addComponent(jLabel10)))
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbtanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                                .addComponent(btnCetak)))))
+                                .addGap(14, 14, 14)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lbtanggal)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbtanggal)
+                    .addComponent(lbtanggal1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(14, 14, 14)
+                                .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel10)
                                     .addComponent(txtNomor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnCari)
-                                .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)))
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(13, 13, 13)
-                                .addComponent(lbKeperluan)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addGap(23, 23, 23)
+                                .addGap(90, 90, 90)
                                 .addComponent(lbtujuan))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
                                 .addGap(6, 6, 6)
-                                .addComponent(jCKeperluan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCKeperluan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbKeperluan))
                                 .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(radakt)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(radakt)
+                                        .addComponent(jLabel5))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(radkpskripsi)
-                                        .addComponent(jCJenisKPSkripsi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jCJenisKPSkripsi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnCetak)))
                                 .addGap(7, 7, 7)
                                 .addComponent(jCPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1055,6 +1071,51 @@ public final class FSurat extends javax.swing.JFrame {
         lbKeperluan.setVisible(true);
     }//GEN-LAST:event_radaktActionPerformed
 
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
+        // TODO add your handling code here:
+        File namafile= new File("src/laporan/mydemik/com/s_kp_skripsi.jasper"); 
+        int baris =jTSurat.getSelectedRow();
+        Fungsi fs=new Fungsi();
+        xsemesterTahun=fs.getSemesterTahun();
+        xtanggal=fs.getTanggal();
+      
+        idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 1);
+        xnosurat=(String) jTSurat.getModel().getValueAt(baris, 2);
+        xnim= (Integer) jTSurat.getModel().getValueAt(baris, 3);
+        xnama=(String) jTSurat.getModel().getValueAt(baris, 4);
+        xprodi=(String) jTSurat.getModel().getValueAt(baris, 6);
+        xalamat=(String) jTSurat.getModel().getValueAt(baris, 9);
+        xisipermohonan=fs.getPermohonan_kp_skripsi(jCJenisKPSkripsi.getSelectedItem().toString(),"abcd" ,"Tanjungpinang");
+
+
+        System.out.println(idSurat);
+        System.out.println(xnosurat);
+        System.out.println(xnim);
+        System.out.println(xnama);
+        System.out.println(xprodi);
+        System.out.println(xalamat);
+
+        Map parameters = new HashMap();
+        parameters.put("xnoSurat", xnosurat);
+        parameters.put("xnim", xnim);
+        parameters.put("xnama", xnama);
+        parameters.put("xprodi", xprodi);
+        parameters.put("xalamat", xalamat);
+        parameters.put("xsemesterTahun", xsemesterTahun);
+        parameters.put("xtanggal", xtanggal);
+        parameters.put("xisipermohonan", xisipermohonan);
+        //parameters.put("field1", xnim);
+
+        try 
+        {
+            JasperPrint print = JasperFillManager.fillReport(namafile.getPath(), parameters, new JREmptyDataSource());
+            JasperViewer.viewReport(print);
+        } catch (JRException ex) {
+           JOptionPane.showMessageDialog(null, "Gagal Membuka Laporan" + ex,"Cetak Laporan",JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnCetakActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1108,6 +1169,7 @@ private class ComboBoxListener implements ActionListener {
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnCetak;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnPDF;
@@ -1136,6 +1198,7 @@ private class ComboBoxListener implements ActionListener {
     private javax.swing.JLabel lbNim;
     private javax.swing.JLabel lbTlp;
     private javax.swing.JLabel lbtanggal;
+    private javax.swing.JLabel lbtanggal1;
     private javax.swing.JLabel lbtujuan;
     private javax.swing.JRadioButton radakt;
     private javax.swing.JRadioButton radkpskripsi;

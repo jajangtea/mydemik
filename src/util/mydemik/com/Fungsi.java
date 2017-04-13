@@ -197,36 +197,50 @@ public class Fungsi {
     }
     
     public void setLebarKolom(JTable tbl) {
-		int a;
-		for (a = 0; a < tbl.getColumnCount(); a++) {
-			setColumnWidth(a,tbl);
-		}
-	}
+        int a;
+        for (a = 0; a < tbl.getColumnCount(); a++) {
+                setColumnWidth(a,tbl);
+        }
+    }
     
     public void setColumnWidth(int kolom,JTable table) {
-		DefaultTableColumnModel modelKolom = (DefaultTableColumnModel) 
-                table.getColumnModel();
-		TableColumn kolomTabel = modelKolom.getColumn(kolom);
-		int lebar = 0;
-		int margin = 10;
-		int a;
+        DefaultTableColumnModel modelKolom = (DefaultTableColumnModel) 
+        table.getColumnModel();
+        TableColumn kolomTabel = modelKolom.getColumn(kolom);
+        int lebar = 0;
+        int margin = 10;
+        int a;
 
-		TableCellRenderer renderer = kolomTabel.getHeaderRenderer();
-		if (renderer == null) {
-			renderer = table.getTableHeader().getDefaultRenderer();
-		}
-		Component komponen = renderer.getTableCellRendererComponent(table,
-				kolomTabel.getHeaderValue(), false, false, 0, 0);
-		lebar = komponen.getPreferredSize().width;
-		for (a = 0; a < table.getRowCount(); a++) {
-			renderer = table.getCellRenderer(a, kolom);
-			komponen = renderer.getTableCellRendererComponent(table,
-					table.getValueAt(a, kolom), false, false, a, kolom);
-			int lebarKolom = komponen.getPreferredSize().width;
-			lebar = Math.max(lebar, lebarKolom);
+        TableCellRenderer renderer = kolomTabel.getHeaderRenderer();
+        if (renderer == null) {
+                renderer = table.getTableHeader().getDefaultRenderer();
+        }
+        Component komponen = renderer.getTableCellRendererComponent(table,
+                        kolomTabel.getHeaderValue(), false, false, 0, 0);
+        lebar = komponen.getPreferredSize().width;
+        for (a = 0; a < table.getRowCount(); a++) {
+                renderer = table.getCellRenderer(a, kolom);
+                komponen = renderer.getTableCellRendererComponent(table,
+                                table.getValueAt(a, kolom), false, false, a, kolom);
+                int lebarKolom = komponen.getPreferredSize().width;
+                lebar = Math.max(lebar, lebarKolom);
 
-		}
-		lebar = lebar + margin;
-		kolomTabel.setPreferredWidth(lebar);
-	}
+        }
+        lebar = lebar + margin;
+        kolomTabel.setPreferredWidth(lebar);
+    }
+    
+    public String getPermohonan_kp_skripsi(String jp,String judul,String tempat)
+    {
+        String isi="";
+        isi="Berkenaan dengan penulisan "+jp+" yang harus dilaksanakan dan ditempuh oleh seluruh mahasiswa "
+                + "program Sarjana (S-1)  STT INDONESIA TANJUNGPINANG, dengan ini kami mohon kesediaan Bapak/Ibu "
+                + "memberikan ijin Penelitian "+jp+" pada mahasiswa kami yang akan melakukan penelitian di"
+                + tempat +" dengan judul "+jp+" yang dimaksud adalah "
+                + judul+ " adapun identitas mahasiswa tersebut adalah :";
+        return isi;
+    }
+    
+    
+    
 }
