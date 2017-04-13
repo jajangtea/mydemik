@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="abed43dc-65c2-43eb-b3e4-99aeff3dbcd3">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="182"/>
+	<property name="ireport.y" value="127"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -54,9 +54,9 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="28" splitType="Stretch">
+		<band height="64" splitType="Stretch">
 			<textField>
-				<reportElement x="1" y="6" width="554" height="20" uuid="ce088b0d-801a-48d7-81af-306f60b4b91e"/>
+				<reportElement x="1" y="-1" width="554" height="20" uuid="ce088b0d-801a-48d7-81af-306f60b4b91e"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
@@ -65,7 +65,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="440" splitType="Stretch">
+		<band height="457" splitType="Stretch">
 			<staticText>
 				<reportElement x="59" y="0" width="463" height="20" uuid="8cdd3b70-42b0-408d-95b7-d9b5a4a0edec"/>
 				<textElement textAlignment="Justified">
@@ -130,7 +130,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="59" y="171" width="431" height="20" uuid="dc19132e-09a1-4d47-bac1-c72c02452103"/>
+				<reportElement x="59" y="171" width="463" height="20" uuid="dc19132e-09a1-4d47-bac1-c72c02452103"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
@@ -144,21 +144,21 @@
 				<text><![CDATA[Demikian  surat  keterangan  dibuat  dengan  sebenar-benarnya dan untuk dipergunakan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="331" y="322" width="159" height="20" uuid="88c90e80-7389-4403-abe3-b1682ec38d8d"/>
+				<reportElement x="331" y="348" width="159" height="20" uuid="88c90e80-7389-4403-abe3-b1682ec38d8d"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
 				<text><![CDATA[Hormat Kami]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="331" y="391" width="159" height="20" uuid="1634889d-4d8c-43d7-8dce-508764cf9c33"/>
+				<reportElement x="331" y="417" width="159" height="20" uuid="1634889d-4d8c-43d7-8dce-508764cf9c33"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Ade Winarni]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="331" y="411" width="159" height="20" uuid="da540812-4364-4b5c-8b41-4a2d3ea8d807"/>
+				<reportElement x="331" y="437" width="159" height="20" uuid="da540812-4364-4b5c-8b41-4a2d3ea8d807"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12" isUnderline="false"/>
 				</textElement>
@@ -214,7 +214,7 @@
 				<text><![CDATA[sebagaimana mestinya.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="331" y="302" width="159" height="20" uuid="01eea591-8aee-4269-a6d9-f3474dc5b17f"/>
+				<reportElement x="331" y="328" width="159" height="20" uuid="01eea591-8aee-4269-a6d9-f3474dc5b17f"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
@@ -223,12 +223,12 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="151" splitType="Stretch"/>
+		<band height="16" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="13" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="10" splitType="Stretch"/>
 	</summary>
 </jasperReport>

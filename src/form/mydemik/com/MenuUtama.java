@@ -81,11 +81,13 @@ public class MenuUtama extends javax.swing.JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		lbl = new JLabel("STT INDONESIA");
+		lbl = new JLabel("");
 		lbl.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl.setFont(new Font("Bauhaus Hv BT", Font.BOLD, 20));
-		lbl.setBounds(118, 188, 156, 29);
-        lbl.setForeground(Color.black);
+		//lbl.setFont(new Font("Bauhaus Hv BT", Font.BOLD, 20));
+		lbl.setBounds(160, 172, 70, 65);
+                lbl.setIcon(new ImageIcon(MenuUtama.class
+				.getResource("/icon/mydemik/com/stti.png")));
+                //lbl.setBounds(104, 249, 70, 65);
 		contentPane.add(lbl);
 
 		lblExit = new JLabel("");
@@ -112,7 +114,7 @@ public class MenuUtama extends javax.swing.JFrame {
 		label.setToolTipText("Data DVD");
 		label.setIcon(new ImageIcon(MenuUtama.class
 				.getResource("/icon/mydemik/com/compose.png")));
-		label.setBounds(299, 172, 70, 65);
+		label.setBounds(325, 172, 70, 65);
 		contentPane.add(label);
 
 		label_1 = new JLabel("");
@@ -126,7 +128,7 @@ public class MenuUtama extends javax.swing.JFrame {
 		label_1.setToolTipText("Peminjam");
 		label_1.setIcon(new ImageIcon(MenuUtama.class
 				.getResource("/icon/mydemik/com/car.png")));
-		label_1.setBounds(32, 172, 70, 65);
+		label_1.setBounds(10, 172, 70, 65);
 		contentPane.add(label_1);
 
 		label_2 = new JLabel("");

@@ -196,8 +196,8 @@ public final class FSurat extends javax.swing.JFrame {
                     Fungsi fs=new Fungsi();
                     xsemesterTahun=fs.getSemesterTahun();
                     xtanggal=fs.getTanggal();
-                    idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 11);
-                    xnosurat=(String) jTSurat.getModel().getValueAt(baris, 1);
+                    idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 1);
+                    xnosurat=(String) jTSurat.getModel().getValueAt(baris, 2);
                     xnim= (Integer) jTSurat.getModel().getValueAt(baris, 3);
                     xnama=(String) jTSurat.getModel().getValueAt(baris, 4);
                     xprodi=(String) jTSurat.getModel().getValueAt(baris, 6);
@@ -987,8 +987,8 @@ public final class FSurat extends javax.swing.JFrame {
         Fungsi fs=new Fungsi();
         xsemesterTahun=fs.getSemesterTahun();
         xtanggal=fs.getTanggal();
-        idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 3);
-        xnosurat=(String) jTSurat.getModel().getValueAt(baris, 1);
+        idSurat = (Integer)   jTSurat.getModel().getValueAt(baris, 1);
+        xnosurat=(String) jTSurat.getModel().getValueAt(baris, 2);
         xnim= (Integer) jTSurat.getModel().getValueAt(baris, 3);
         xnama=(String) jTSurat.getModel().getValueAt(baris, 4);
         xprodi=(String) jTSurat.getModel().getValueAt(baris, 6);
