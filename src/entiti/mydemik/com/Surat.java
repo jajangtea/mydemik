@@ -1,5 +1,5 @@
 package entiti.mydemik.com;
-// Generated Apr 12, 2017 12:46:51 PM by Hibernate Tools 4.3.1
+// Generated Apr 13, 2017 5:35:05 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,11 +20,24 @@ public class Surat  implements java.io.Serializable {
      private Date tanggalSurat;
      private Date tanggalBuat;
      private String noSurat;
+     private String judul;
 
     public Surat() {
     }
 
+	
     public Surat(Jenissurat jenissurat, Kategori kategori, Keperluan keperluan, Mahasiswa mahasiswa, Perusahaan perusahaan, Thajaran thajaran, Date tanggalSurat, Date tanggalBuat, String noSurat) {
+        this.jenissurat = jenissurat;
+        this.kategori = kategori;
+        this.keperluan = keperluan;
+        this.mahasiswa = mahasiswa;
+        this.perusahaan = perusahaan;
+        this.thajaran = thajaran;
+        this.tanggalSurat = tanggalSurat;
+        this.tanggalBuat = tanggalBuat;
+        this.noSurat = noSurat;
+    }
+    public Surat(Jenissurat jenissurat, Kategori kategori, Keperluan keperluan, Mahasiswa mahasiswa, Perusahaan perusahaan, Thajaran thajaran, Date tanggalSurat, Date tanggalBuat, String noSurat, String judul) {
        this.jenissurat = jenissurat;
        this.kategori = kategori;
        this.keperluan = keperluan;
@@ -34,6 +47,7 @@ public class Surat  implements java.io.Serializable {
        this.tanggalSurat = tanggalSurat;
        this.tanggalBuat = tanggalBuat;
        this.noSurat = noSurat;
+       this.judul = judul;
     }
    
     public Integer getIdSurat() {
@@ -105,6 +119,13 @@ public class Surat  implements java.io.Serializable {
     
     public void setNoSurat(String noSurat) {
         this.noSurat = noSurat;
+    }
+    public String getJudul() {
+        return this.judul;
+    }
+    
+    public void setJudul(String judul) {
+        this.judul = judul;
     }
 
 

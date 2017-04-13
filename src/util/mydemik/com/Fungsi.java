@@ -5,6 +5,7 @@
  */
 package util.mydemik.com;
 
+import entiti.mydemik.com.Surat;
 import entiti.mydemik.com.Thajaran;
 import java.awt.Component;
 import java.text.ParseException;
@@ -32,6 +33,8 @@ public class Fungsi {
     private Integer ta_aktif;
     private String tahun,semester;
     private Date tgl;
+    public String xnosurat,xnama,xalamat,xprodi,xsemesterTahun,xtanggal,xisipermohonan,xjudul,xperusahaan,xta;
+    public Integer xnim;
     public int getTa() 
     {
         try
@@ -239,6 +242,43 @@ public class Fungsi {
                 + tempat +" dengan judul "+jp+" yang dimaksud adalah "
                 + judul+ " adapun identitas mahasiswa tersebut adalah :";
         return isi;
+    }
+    
+    public String getSurat(int idSurat)
+    {
+        try
+        {
+            
+            SessionFactory sf=HibernateUtil.getSessionFactory();
+            Session s=sf.openSession();
+            Transaction tx = s.beginTransaction();
+            Query q = s.createQuery("FROM Surat where idSurat=:idSurat");
+            q.setParameter("idSurat",idSurat);
+            List resultList = q.list();
+            for(Object o : resultList) 
+            {
+                Surat sr = (Surat)o;
+                xalamat=sr.getMahasiswa().getAlamat();
+                xnama=sr.getMahasiswa().getNama();
+                xnim=sr.getMahasiswa().getNim();
+                xnosurat=sr.getNoSurat();
+                xprodi=sr.getMahasiswa().getProdi().getNamaProdi();
+                xtanggal=sr.getTanggalSurat().toString();
+                xjudul=sr.getJudul();
+                xperusahaan=sr.getPerusahaan().toString();
+                
+            }
+            s.flush();
+            tx.commit();
+            s.close();
+            
+        }
+        catch (ClassCastException e) 
+        {
+            System.out.println("Err :" + e);
+        }
+        
+        return "terdaftar sebagai mahasiswa pada semester "+semester+" T.A "+tahun+".";
     }
     
     

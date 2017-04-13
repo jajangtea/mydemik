@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 12, 2017 12:46:53 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 13, 2017 5:35:06 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entiti.mydemik.com.Surat" table="surat" catalog="mydemik" optimistic-lock="version">
         <id name="idSurat" type="java.lang.Integer">
@@ -34,6 +34,9 @@
         </property>
         <property name="noSurat" type="string">
             <column name="noSurat" length="200" not-null="true" />
+        </property>
+        <property name="judul" type="string">
+            <column name="judul" length="65535" />
         </property>
     </class>
 </hibernate-mapping>
