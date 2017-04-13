@@ -421,7 +421,7 @@ public final class FSurat extends javax.swing.JFrame {
             List mhs=q.list();
             if(txtNim.getText().equals(""))
             {
-                FMahasiswa f =new FMahasiswa();
+                FMhs f =new FMhs();
                 f.setVisible(rootPaneCheckingEnabled);
                 this.setVisible(false);
             }
@@ -431,7 +431,7 @@ public final class FSurat extends javax.swing.JFrame {
                 int dr=JOptionPane.showConfirmDialog(this, "Form pencarian.", "Pertanyaan", dialogbtn);
                 if(dr==0)
                 {
-                    FMahasiswa f =new FMahasiswa();
+                    FMhs f =new FMhs();
                     f.setModalExclusionType(Dialog.ModalExclusionType.NO_EXCLUDE);
                     f.setVisible(rootPaneCheckingEnabled);
                     f.txtCari.setText("");

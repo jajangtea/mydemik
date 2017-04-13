@@ -23,15 +23,15 @@ import util.mydemik.com.HibernateUtil;
  *
  * @author jajangtea
  */
-public class FMahasiswa extends javax.swing.JFrame {
+public class FMhs extends javax.swing.JFrame {
 
     /**
-     * Creates new form FMahasiswa
+     * Creates new form FMhs
      */
     Vector<String> tableHeaders = new Vector<String>();
     Vector tableData = new Vector();
     Query q;
-    public FMahasiswa() {
+    public FMhs() {
         initComponents();
         fillTable(jTMahasiswa);
     }
@@ -206,7 +206,7 @@ public class FMahasiswa extends javax.swing.JFrame {
             this.setVisible(false);
             fs.setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(FMahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FMhs.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }//GEN-LAST:event_jTMahasiswaMouseClicked
@@ -232,20 +232,20 @@ public class FMahasiswa extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(FMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(FMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(FMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(FMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(FMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(FMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(FMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(FMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new FMahasiswa().setVisible(true);
+//                new FMhs().setVisible(true);
 //            }
 //        });
 //    }
