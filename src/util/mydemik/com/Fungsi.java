@@ -238,9 +238,9 @@ public class Fungsi {
         String isi="";
         isi="Berkenaan dengan penulisan "+jp+" yang harus dilaksanakan dan ditempuh oleh seluruh mahasiswa "
                 + "program Sarjana (S-1)  STT INDONESIA TANJUNGPINANG, dengan ini kami mohon kesediaan Bapak/Ibu "
-                + "memberikan ijin Penelitian "+jp+" pada mahasiswa kami yang akan melakukan penelitian di"
-                + tempat +" dengan judul "+jp+" yang dimaksud adalah "
-                + judul+ " adapun identitas mahasiswa tersebut adalah :";
+                + "memberikan ijin Penelitian "+jp+" pada mahasiswa kami yang akan melakukan penelitian di "
+                + tempat +" dengan judul "+judul+" yang dimaksud adalah "
+                + judul+ ", adapun identitas mahasiswa tersebut adalah :";
         return isi;
     }
     
@@ -265,7 +265,7 @@ public class Fungsi {
                 xprodi=sr.getMahasiswa().getProdi().getNamaProdi();
                 xtanggal=sr.getTanggalSurat().toString();
                 xjudul=sr.getJudul();
-                xperusahaan=sr.getPerusahaan().toString();
+                xperusahaan=sr.getPerusahaan().getNamaPerusahaan();
                 
             }
             s.flush();
