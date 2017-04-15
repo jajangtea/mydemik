@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="abed43dc-65c2-43eb-b3e4-99aeff3dbcd3">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="218"/>
+	<property name="ireport.y" value="366"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -32,6 +32,7 @@
 	<parameter name="xsemesterTahun" class="java.lang.String"/>
 	<parameter name="xtanggal" class="java.lang.String"/>
 	<parameter name="xperusahaan" class="java.lang.String"/>
+	<parameter name="xhal" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -73,13 +74,6 @@
 				</textElement>
 				<text><![CDATA[Lampiran ]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="142" y="42" width="245" height="20" uuid="3df0962c-462e-43b1-afc7-e69313c57438"/>
-				<textElement>
-					<font fontName="Calibri" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{xnoSurat}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="129" y="1" width="7" height="21" uuid="5300f83f-4afe-4e50-9dba-b20850132855"/>
 				<textElement>
@@ -129,6 +123,20 @@
 				</textElement>
 				<text><![CDATA[Di Tempat]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="142" y="41" width="245" height="21" uuid="cbd13463-7330-4e22-aa1b-33459dbfec9e"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="143" y="22" width="244" height="20" uuid="a9fb09bf-f389-46e6-b0f1-2aeb5768883c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{xhal}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -137,7 +145,7 @@
 	<detail>
 		<band height="457" splitType="Stretch">
 			<staticText>
-				<reportElement x="62" y="240" width="463" height="19" uuid="7d59ac8c-7a1a-4510-8c3e-d10201c20ca2"/>
+				<reportElement x="62" y="231" width="463" height="19" uuid="7d59ac8c-7a1a-4510-8c3e-d10201c20ca2"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
@@ -165,7 +173,7 @@
 				<text><![CDATA[Puket I Bidang Akademik]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="62" y="259" width="431" height="19" uuid="7c24bb41-d291-406f-beb9-f0c50c45263b"/>
+				<reportElement x="62" y="250" width="431" height="19" uuid="7c24bb41-d291-406f-beb9-f0c50c45263b"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
@@ -179,67 +187,67 @@
 				<textFieldExpression><![CDATA[$P{xtanggal}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="62" y="187" width="81" height="20" uuid="a6fc547f-06dd-4cc3-acc7-c6d6984dbd7c"/>
+				<reportElement x="62" y="182" width="81" height="20" uuid="a6fc547f-06dd-4cc3-acc7-c6d6984dbd7c"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="62" y="167" width="81" height="20" uuid="d37a0359-8911-4ec6-8689-8ea5185d44cf"/>
+				<reportElement x="62" y="162" width="81" height="20" uuid="d37a0359-8911-4ec6-8689-8ea5185d44cf"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="62" y="168" width="81" height="20" uuid="be5db0f2-96a5-48a1-b02b-05226a7e5e4b"/>
+				<reportElement x="62" y="163" width="81" height="20" uuid="be5db0f2-96a5-48a1-b02b-05226a7e5e4b"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NIM]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="143" y="167" width="213" height="20" uuid="71a09007-058d-4757-97bc-4a63663338a3"/>
+				<reportElement x="143" y="162" width="213" height="20" uuid="71a09007-058d-4757-97bc-4a63663338a3"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="356" y="167" width="168" height="20" uuid="8eae4300-16f4-4b69-98de-781eef10bd03"/>
+				<reportElement x="356" y="162" width="168" height="20" uuid="8eae4300-16f4-4b69-98de-781eef10bd03"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="143" y="168" width="213" height="20" uuid="32d1093d-d35f-41b6-991c-51bcd1533041"/>
+				<reportElement x="143" y="163" width="213" height="20" uuid="32d1093d-d35f-41b6-991c-51bcd1533041"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nama]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="356" y="167" width="168" height="20" uuid="2a328398-4c85-4c07-bb76-4779dd726495"/>
+				<reportElement x="356" y="162" width="168" height="20" uuid="2a328398-4c85-4c07-bb76-4779dd726495"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Program Studi]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="143" y="187" width="213" height="20" uuid="8e7d7a61-544f-4971-b9bc-ad81f58a4ad6"/>
+				<reportElement x="143" y="182" width="213" height="20" uuid="8e7d7a61-544f-4971-b9bc-ad81f58a4ad6"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="356" y="187" width="168" height="20" uuid="f04fbdd3-f802-4cdc-872d-62b87277601f"/>
+				<reportElement x="356" y="182" width="168" height="20" uuid="f04fbdd3-f802-4cdc-872d-62b87277601f"/>
 			</rectangle>
 			<textField>
-				<reportElement x="62" y="187" width="81" height="20" uuid="0f45277f-d719-4ef7-9b0f-ea62d826abd9"/>
+				<reportElement x="62" y="182" width="81" height="20" uuid="0f45277f-d719-4ef7-9b0f-ea62d826abd9"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{xnim}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="143" y="187" width="213" height="20" uuid="7d14d1c6-6e60-4c67-9a78-6f9c9f17a6f6"/>
+				<reportElement x="143" y="182" width="213" height="20" uuid="7d14d1c6-6e60-4c67-9a78-6f9c9f17a6f6"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{xnama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="356" y="187" width="168" height="20" uuid="95f643b1-a28b-437c-8f0f-570b0c5bbd62"/>
+				<reportElement x="356" y="182" width="168" height="20" uuid="95f643b1-a28b-437c-8f0f-570b0c5bbd62"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{xprodi}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="61" y="50" width="463" height="107" uuid="c4c03bc1-db11-477a-940a-b031fda75489"/>
+				<reportElement x="61" y="50" width="463" height="104" uuid="c4c03bc1-db11-477a-940a-b031fda75489"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Calibri" size="12"/>
 				</textElement>

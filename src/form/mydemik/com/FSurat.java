@@ -75,7 +75,7 @@ public final class FSurat extends javax.swing.JFrame {
     private JLabel lblWall;
     Integer idmhs,idkat,idSurat=0;
     
-    String xnosurat,xnama,xalamat,xprodi,xsemesterTahun,xtanggal,xisipermohonan,idjeniskpskripsi;
+    String xnosurat,xnama,xalamat,xprodi,xsemesterTahun,xtanggal,xisipermohonan,xhal,idjeniskpskripsi;
     Integer xnim;
     Date tgl;
     Fungsi nf=new Fungsi();
@@ -1089,10 +1089,9 @@ public final class FSurat extends javax.swing.JFrame {
             
             Map parameters = new HashMap();
 //            
+            fs.getSurat(idSurat);
             parameters.put("xsemesterTahun", xsemesterTahun);
             parameters.put("xtanggal", xtanggal);
-            //parameters.put("field1", xnim);
-            fs.getSurat(idSurat);
             parameters.put("xnoSurat", fs.xnosurat);
             parameters.put("xnim", fs.xnim);
             parameters.put("xnama", fs.xnama);
@@ -1117,6 +1116,7 @@ public final class FSurat extends javax.swing.JFrame {
             File namafile= new File("src/laporan/mydemik/com/s_kp_skripsi.jasper"); 
             xsemesterTahun=fs.getSemesterTahun();
             xtanggal=fs.getTanggal();
+            
             fs.getSurat(idSurat);
             Map parameters = new HashMap();
             parameters.put("xnoSurat", fs.xnosurat);
@@ -1130,6 +1130,8 @@ public final class FSurat extends javax.swing.JFrame {
             parameters.put("xperusahaan", fs.xperusahaan);
             xisipermohonan=fs.getPermohonan_kp_skripsi(jCJenisKPSkripsi.getSelectedItem().toString(),fs.xjudul ,fs.xperusahaan);
             parameters.put("xisipermohonan", xisipermohonan);
+            xhal="Permohonan "+jCJenisKPSkripsi.getSelectedItem().toString();
+            parameters.put("xhal",xhal);
             try 
             {
                 JasperPrint print = JasperFillManager.fillReport(namafile.getPath(), parameters, new JREmptyDataSource());
