@@ -48,7 +48,7 @@ public class __EntryTA extends javax.swing.JFrame {
             SessionFactory sf=HibernateUtil.getSessionFactory();
             Session s=sf.openSession();
             Transaction tx = s.beginTransaction();
-            Query q = s.createQuery("FROM Thajaran");
+            Query q = s.createQuery("FROM Thajaran order by tahun desc");
             List resultList = q.list();
             Vector<String> tableHeaders = new Vector<String>();
             Vector tableData = new Vector();
@@ -102,6 +102,7 @@ public class __EntryTA extends javax.swing.JFrame {
         btnKeluar = new javax.swing.JButton();
         chkStatus = new javax.swing.JCheckBox();
         cbbSemester = new javax.swing.JComboBox<>();
+        btnBaru = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Kelola Mahasiswa");
@@ -176,6 +177,13 @@ public class __EntryTA extends javax.swing.JFrame {
 
         cbbSemester.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ganjil", "Genap", "Pendek" }));
 
+        btnBaru.setText("Baru");
+        btnBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBaruActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,24 +197,26 @@ public class __EntryTA extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel10))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(chkStatus)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cbbSemester, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(TxtTahun))
-                                        .addGap(9, 9, 9)))))
+                                        .addComponent(btnBaru, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnSimpan)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnHapus))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(chkStatus)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(cbbSemester, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(TxtTahun))
+                                            .addGap(9, 9, 9))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -229,7 +239,8 @@ public class __EntryTA extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
-                    .addComponent(btnHapus))
+                    .addComponent(btnHapus)
+                    .addComponent(btnBaru))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -243,10 +254,12 @@ public class __EntryTA extends javax.swing.JFrame {
 
     private void TTAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TTAMouseClicked
         int baris =TTA.getSelectedRow();
+        btnSimpan.setText("Ubah");
         idMhs= (int) TTA.getModel().getValueAt(baris, 1);
         System.out.println(idMhs);
         TxtTahun.setText((String) TTA.getModel().getValueAt(baris, 2));
         cbbSemester.setSelectedItem((String) TTA.getModel().getValueAt(baris, 3));
+          System.out.println(cbbSemester.getSelectedItem());
         String cek=(String) TTA.getModel().getValueAt(baris, 4);
         if(cek.equals("Aktif"))
         {
@@ -271,15 +284,31 @@ public class __EntryTA extends javax.swing.JFrame {
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session s=sf.openSession();
         Thajaran pr=new Thajaran();
-        pr.setIdThajaran(idMhs);
-        pr.setTahun(TxtTahun.getText());
-        pr.setSemester(cbbSemester.getSelectedItem().toString());
-        Transaction tx=s.beginTransaction();
-        s.saveOrUpdate(pr);
-        tx.commit();
-        s.flush();
-        s.close();
-        fillTable(TTA);
+       
+        if(btnSimpan.getText().equals("Simpan"))
+        {
+            pr.setTahun(TxtTahun.getText());
+            pr.setSemester(cbbSemester.getSelectedItem().toString());
+            Transaction tx=s.beginTransaction();
+            s.saveOrUpdate(pr);
+            tx.commit();
+            s.flush();
+            s.close();
+            fillTable(TTA);
+        }
+        else
+        {
+            pr.setIdThajaran(idMhs);
+            pr.setTahun(TxtTahun.getText());
+            pr.setSemester(cbbSemester.getSelectedItem().toString());
+            Transaction tx=s.beginTransaction();
+            s.saveOrUpdate(pr);
+            tx.commit();
+            s.flush();
+            s.close();
+            fillTable(TTA);
+        }
+        
     }//GEN-LAST:event_btnSimpanActionPerformed
     private void Hapus(int hps) 
     {
@@ -342,6 +371,11 @@ public class __EntryTA extends javax.swing.JFrame {
         fillTable(TTA);
     }//GEN-LAST:event_chkStatusActionPerformed
 
+    private void btnBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaruActionPerformed
+        // TODO add your handling code here:
+        btnSimpan.setText("Simpan");
+    }//GEN-LAST:event_btnBaruActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,6 +384,7 @@ public class __EntryTA extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable TTA;
     public javax.swing.JTextField TxtTahun;
+    private javax.swing.JButton btnBaru;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnKeluar;
     private javax.swing.JButton btnSimpan;

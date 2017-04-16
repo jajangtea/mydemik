@@ -69,6 +69,7 @@ public final class FSurat extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    Fungsi fs=new Fungsi();
     private JPanel contentPane;
     private JLabel lblWall;
     Integer idmhs,idkat,idSurat=0;
@@ -521,7 +522,6 @@ public final class FSurat extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnHapus = new javax.swing.JButton();
         btnSimpan = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
         txtNim = new javax.swing.JTextField();
         lbtanggal = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -529,17 +529,22 @@ public final class FSurat extends javax.swing.JFrame {
         lbtujuan = new javax.swing.JLabel();
         lbKeperluan = new javax.swing.JLabel();
         txtNomor = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTSurat = new javax.swing.JTable();
         btnPDF = new javax.swing.JButton();
         lbtanggal1 = new javax.swing.JLabel();
         btnCetak = new javax.swing.JButton();
         txtJudul = new javax.swing.JTextField();
         lbjudul = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTSurat = new javax.swing.JTable();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setFocusTraversalPolicyProvider(true);
         setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        setLocationByPlatform(true);
+        setResizable(false);
+        setSize(new java.awt.Dimension(0, 0));
 
         jCJenisKPSkripsi.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jCJenisKPSkripsi.addItemListener(new java.awt.event.ItemListener() {
@@ -575,7 +580,7 @@ public final class FSurat extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -627,7 +632,7 @@ public final class FSurat extends javax.swing.JFrame {
                     .addComponent(lbTlp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbAlamat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbNim, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -696,13 +701,6 @@ public final class FSurat extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setText("Keluar");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
         txtNim.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txtNim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -737,25 +735,6 @@ public final class FSurat extends javax.swing.JFrame {
 
         txtNomor.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
-        jTSurat.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTSurat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTSurat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTSuratMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTSurat);
-
         btnPDF.setText("PDF");
         btnPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -778,126 +757,177 @@ public final class FSurat extends javax.swing.JFrame {
         lbjudul.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         lbjudul.setText("Judul KP & Skripsi :");
 
+        jTSurat.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jTSurat.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTSurat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTSuratMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTSurat);
+
+        btnClose.setText("Keluar");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbtanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbtanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(lbKeperluan)
-                            .addComponent(jLabel3)
-                            .addComponent(lbjudul)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel4)
-                            .addComponent(lbtujuan))
-                        .addGap(18, 18, 18)
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtNomor, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                                            .addComponent(jCKeperluan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(radakt)
-                                        .addGap(2, 2, 2)
-                                        .addComponent(radkpskripsi)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCJenisKPSkripsi, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(12, 12, 12)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel4))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel10))
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(lbKeperluan))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel5)))
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNomor, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCKeperluan, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(radakt)
+                                .addGap(2, 2, 2)
+                                .addComponent(radkpskripsi)
+                                .addGap(2, 2, 2)
+                                .addComponent(jCJenisKPSkripsi, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(lbtanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(lbtanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(91, 91, 91)
+                                .addComponent(lbtujuan)
+                                .addGap(4, 4, 4)
+                                .addComponent(jCPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(139, 139, 139)
                                 .addComponent(btnPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnClose)
+                                .addGap(6, 6, 6)
+                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(lbjudul)
+                                .addGap(4, 4, 4)
+                                .addComponent(txtJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnClose)))))
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCetak, btnHapus, btnPDF, btnSimpan});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbtanggal)
-                    .addComponent(lbtanggal1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbtanggal1)
+                    .addComponent(lbtanggal))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel4)
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel10)
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel3)
+                        .addGap(13, 13, 13)
+                        .addComponent(lbKeperluan)
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(txtNomor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnCari)
-                                .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                                .addGap(1, 1, 1)
+                                .addComponent(txtNim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCari))
+                        .addGap(5, 5, 5)
+                        .addComponent(txtNomor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCKeperluan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbKeperluan))
+                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jCKeperluan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(radakt)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(radkpskripsi)
-                                .addComponent(jCJenisKPSkripsi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(radakt)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(radkpskripsi))
+                            .addComponent(jCJenisKPSkripsi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtJudul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbjudul))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbjudul)
+                    .addComponent(txtJudul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbtujuan)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbtujuan))
                     .addComponent(jCPerusahaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPDF)
-                    .addComponent(btnSimpan)
-                    .addComponent(btnHapus)
-                    .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(btnPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btnSimpan))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btnHapus))
+                    .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClose)
-                .addGap(1, 1, 1))
+                .addGap(0, 0, 0))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCetak, btnHapus, btnPDF, btnSimpan});
 
         pack();
         setLocationRelativeTo(null);
@@ -993,12 +1023,6 @@ public final class FSurat extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNimActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        
-    }//GEN-LAST:event_btnCloseActionPerformed
-
     private void jCJenisKPSkripsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCJenisKPSkripsiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCJenisKPSkripsiActionPerformed
@@ -1042,32 +1066,61 @@ public final class FSurat extends javax.swing.JFrame {
     }//GEN-LAST:event_jTSuratMouseClicked
 
     private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
-        // TODO add your handling code here:
-        File namafile= new File("src/laporan/mydemik/com/s_aktif_kuliah.jasper"); 
-        HashMap param = new HashMap();                
-        param.put("noSurat","tes"); 
-        System.out.println("tampilkan laporan");
-
-
-        Map parameters = new HashMap();
-        parameters.put("xnoSurat", xnosurat);
-        parameters.put("xnim", xnim);
-        parameters.put("xnama", xnama);
-        parameters.put("xprodi", xprodi);
-        parameters.put("xalamat", xalamat);
-        parameters.put("xsemesterTahun", xsemesterTahun);
-        parameters.put("xtanggal", xtanggal);
-        //parameters.put("field1", xnim);
-
-        try 
+        if(radakt.isSelected())
         {
-            JasperPrint print = JasperFillManager.fillReport(namafile.getPath(), parameters, new JREmptyDataSource());
-            //JasperViewer.viewReport(print);
-            //JasperViewer.viewReport(print,false);
-            JasperExportManager.exportReportToPdfFile(print, "sample.pdf");
-        } catch (JRException ex) {
-           JOptionPane.showMessageDialog(null, "Gagal Membuka Laporan" + ex,"Cetak Laporan",JOptionPane.ERROR_MESSAGE);
+            File namafile= new File("src/laporan/mydemik/com/s_aktif_kuliah.jasper"); 
+            xsemesterTahun=fs.getSemesterTahun();
+            xtanggal=fs.getTanggal();
+
+            Map parameters = new HashMap();
+            fs.getSurat(idSurat);
+            parameters.put("xsemesterTahun", xsemesterTahun);
+            parameters.put("xtanggal", xtanggal);
+            parameters.put("xnoSurat", fs.xnosurat);
+            parameters.put("xnim", fs.xnim);
+            parameters.put("xnama", fs.xnama);
+            parameters.put("xprodi", fs.xprodi);
+            parameters.put("xalamat", fs.xalamat);
+
+            try 
+            {
+                JasperPrint print = JasperFillManager.fillReport(namafile.getPath(), parameters, new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(print, "D:/aktif_kuliah_"+fs.xnim+"_"+fs.xnama+".pdf");
+            } catch (JRException ex) 
+            {
+               JOptionPane.showMessageDialog(null, "Gagal Membuka Laporan" + ex,"Cetak Laporan",JOptionPane.ERROR_MESSAGE);
+            }
         }
+        else
+        {
+            File namafile= new File("src/laporan/mydemik/com/s_kp_skripsi.jasper"); 
+            xsemesterTahun=fs.getSemesterTahun();
+            xtanggal=fs.getTanggal();
+            
+            fs.getSurat(idSurat);
+            Map parameters = new HashMap();
+            parameters.put("xnoSurat", fs.xnosurat);
+            parameters.put("xnim", fs.xnim);
+            parameters.put("xnama", fs.xnama);
+            parameters.put("xprodi", fs.xprodi);
+            parameters.put("xalamat", fs.xalamat);
+            parameters.put("xsemesterTahun", xsemesterTahun);
+            parameters.put("xtanggal", xtanggal);
+            parameters.put("xjudul", fs.xjudul);
+            parameters.put("xperusahaan", fs.xperusahaan);
+            xisipermohonan=fs.getPermohonan_kp_skripsi(fs.xjkps,fs.xjudul ,fs.xperusahaan);
+            parameters.put("xisipermohonan", xisipermohonan);
+            xhal="Permohonan Penelitian "+fs.xjkps;
+            parameters.put("xhal",xhal);
+            try 
+            {
+                JasperPrint print = JasperFillManager.fillReport(namafile.getPath(), parameters, new JREmptyDataSource());
+                JasperExportManager.exportReportToPdfFile(print, "D:/permohonan_"+fs.xjkps+"_"+fs.xnim+"_"+fs.xnama+".pdf");
+            } catch (JRException ex) {
+               JOptionPane.showMessageDialog(null, "Gagal Membuka Laporan" + ex,"Cetak Laporan",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
     }//GEN-LAST:event_btnPDFActionPerformed
 
     private void radkpskripsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radkpskripsiActionPerformed
@@ -1098,7 +1151,7 @@ public final class FSurat extends javax.swing.JFrame {
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
         // TODO add your handling code here:
-        Fungsi fs=new Fungsi();
+        
         if (idSurat==0)
         {
             JOptionPane.showMessageDialog(this, "Pilih Surat yang akan dicetak");
@@ -1131,10 +1184,6 @@ public final class FSurat extends javax.swing.JFrame {
             {
                JOptionPane.showMessageDialog(null, "Gagal Membuka Laporan" + ex,"Cetak Laporan",JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else if(jCJenisKPSkripsi.getSelectedItem().equals("-"))
-        {
-             JOptionPane.showMessageDialog(null, "Pilih KP/Skripsi","Cetak Laporan",JOptionPane.ERROR_MESSAGE);
         }
         else if(idSurat!=0 && radkpskripsi.isSelected())
         {     
@@ -1169,45 +1218,50 @@ public final class FSurat extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCetakActionPerformed
 
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FSurat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FSurat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FSurat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FSurat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new FSurat().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(FSurat.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Windows".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FSurat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FSurat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FSurat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FSurat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                try {
+//                    new FSurat().setVisible(true);
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(FSurat.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        });
+//    }
 private class ComboBoxListener implements ActionListener {
         
 

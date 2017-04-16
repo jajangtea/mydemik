@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 package form.mydemik.com;
-import entiti.mydemik.com.Prodi;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -103,7 +101,7 @@ public class MenuUtama extends javax.swing.JFrame {
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-                 JOptionPane.showMessageDialog(null, "Movie Rental App");
+               //  JOptionPane.showMessageDialog(null, "Movie Rental App");
 //				FrmDVD fd = new FrmDVD();
 //				fd.setVisible(true);
 			}
@@ -122,7 +120,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 {
                     __EntryTA fp;
                     fp = new __EntryTA();
-                    fp.setVisible(true);
+                    fp.setVisible(rootPaneCheckingEnabled);
                 } catch (SQLException ex) {
                     Logger.getLogger(MenuUtama.class.getName()).log(Level.SEVERE, null, ex);
                 }
