@@ -4,20 +4,17 @@
  * and open the template in the editor.
  */
 package form.mydemik.com;
-import java.awt.Color;
-import java.awt.EventQueue;
+import entiti.mydemik.com.Prodi;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.Font;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,8 +42,7 @@ public class MenuUtama extends javax.swing.JFrame {
      * Creates new form MenuUtama
      */
     public MenuUtama() {
-        
-		addMouseMotionListener(new MouseMotionAdapter() {
+        addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent me) {
 				if (mousePress = true) {
@@ -107,6 +103,7 @@ public class MenuUtama extends javax.swing.JFrame {
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+                 JOptionPane.showMessageDialog(null, "Movie Rental App");
 //				FrmDVD fd = new FrmDVD();
 //				fd.setVisible(true);
 			}
@@ -121,8 +118,14 @@ public class MenuUtama extends javax.swing.JFrame {
 		label_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				FrmPelanggan fp = new FrmPelanggan();
-//				fp.setVisible(true);
+                try 
+                {
+                    __EntryTA fp;
+                    fp = new __EntryTA();
+                    fp.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MenuUtama.class.getName()).log(Level.SEVERE, null, ex);
+                }
 			}
 		});
 		label_1.setToolTipText("Peminjam");
@@ -135,10 +138,17 @@ public class MenuUtama extends javax.swing.JFrame {
 		label_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "Movie Rental App");
+                try 
+                {
+                    __EntryProdi ep = new __EntryProdi();
+                    ep.setVisible(true);
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(MenuUtama.class.getName()).log(Level.SEVERE, null, ex);
+                } 
 			}
 		});
-		label_2.setToolTipText("Tentang");
+		label_2.setToolTipText("Prodi");
 		label_2.setIcon(new ImageIcon(MenuUtama.class
 				.getResource("/icon/mydemik/com/tools.png")));
 		label_2.setBounds(224, 249, 70, 65);
@@ -148,13 +158,18 @@ public class MenuUtama extends javax.swing.JFrame {
 		label_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				FrmPeminjaman fj = new FrmPeminjaman();
-//				fj.setVisible(true);
+                try {
+                    __EntryMahasiswa fp;
+                    fp = new __EntryMahasiswa();
+                    fp.setVisible(rootPaneCheckingEnabled);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MenuUtama.class.getName()).log(Level.SEVERE, null, ex);
+                }
 			}
 		});
-		label_3.setToolTipText("Peminjaman");
+		label_3.setToolTipText("Mahasiswa");
 		label_3.setIcon(new ImageIcon(MenuUtama.class
-				.getResource("/icon/mydemik/com/calendar.png")));
+				.getResource("/icon/mydemik/com/compose.png")));
 		label_3.setBounds(104, 91, 70, 65);
 		contentPane.add(label_3);
 
@@ -162,8 +177,8 @@ public class MenuUtama extends javax.swing.JFrame {
 		label_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				FSurat fsurat;
                 try {
+                    FSurat fsurat;
                     fsurat = new FSurat();
                     fsurat.setVisible(rootPaneCheckingEnabled);
                 } catch (SQLException ex) {
@@ -185,7 +200,7 @@ public class MenuUtama extends javax.swing.JFrame {
 		contentPane.add(lblWall);
 		setShape(new Ellipse2D.Double(0, 0, 400, 400));
 		setLocationRelativeTo(null);
-       // initComponents();
+        this.setTitle("Menu Utama");
     }
 
     /**

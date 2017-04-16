@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -33,7 +34,7 @@ public class Fungsi {
     private Integer ta_aktif;
     private String tahun,semester;
     private Date tgl;
-    public String xnosurat,xnama,xalamat,xprodi,xsemesterTahun,xtanggal,xisipermohonan,xjudul,xperusahaan,xta;
+    public String xnosurat,xnama,xalamat,xprodi,xsemesterTahun,xtanggal,xisipermohonan,xjudul,xperusahaan,xta,xjkps;
     public Integer xnim;
     public int getTa() 
     {
@@ -236,10 +237,12 @@ public class Fungsi {
     public String getPermohonan_kp_skripsi(String jp,String judul,String tempat)
     {
         String isi="";
+        char kutip;
+        kutip='"';
         isi="Berkenaan dengan penulisan "+jp+" yang harus dilaksanakan dan ditempuh oleh seluruh mahasiswa "
                 + "program Sarjana (S-1)  STT INDONESIA TANJUNGPINANG, dengan ini kami mohon kesediaan Bapak/Ibu "
-                + "memberikan ijin Penelitian "+jp.toUpperCase()+" pada mahasiswa kami yang akan melakukan penelitian di "
-                + tempat +" dengan judul "+judul+""
+                + "memberikan ijin Penelitian "+jp+" pada mahasiswa kami yang akan melakukan penelitian di "
+                + tempat +" dengan judul "+kutip+judul.toUpperCase()+kutip+""
                 + " adapun identitas mahasiswa tersebut adalah :";
         return isi;
     }
@@ -266,7 +269,7 @@ public class Fungsi {
                 xtanggal=sr.getTanggalSurat().toString();
                 xjudul=sr.getJudul();
                 xperusahaan=sr.getPerusahaan().getNamaPerusahaan();
-                
+                xjkps=sr.getJenissurat().getJenisSurat();
             }
             s.flush();
             tx.commit();
@@ -280,7 +283,11 @@ public class Fungsi {
         
         return "terdaftar sebagai mahasiswa pada semester "+semester+" T.A "+tahun+".";
     }
-    
+    public void hideColumn(JTable tbl,int kolom)
+    {
+        TableColumnModel tcm =tbl.getColumnModel();
+        tcm.removeColumn(tcm.getColumn(kolom));
+    }
     
     
 }
